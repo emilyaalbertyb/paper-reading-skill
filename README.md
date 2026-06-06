@@ -1,5 +1,7 @@
 # Paper Reading Skill
 
+[English README](README.en.md)
+
 `paper-reading` 是一个用于深度阅读学术论文的 Codex skill，适用于 arXiv 论文、PDF、技术报告、研究文章，以及多篇论文对比分析。
 
 它默认使用中文输出，重点不是复述摘要，而是帮助你判断论文真正要解决什么问题、方法是否有新意、证据是否充分、贡献是否被夸大，以及有哪些可以复用的想法。
