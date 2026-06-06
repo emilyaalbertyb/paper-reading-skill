@@ -2,9 +2,9 @@
 
 [English README](README.en.md)
 
-`paper-reading` 是一个用于深度阅读学术论文的 Codex skill，适用于 arXiv 论文、PDF、技术报告、研究文章，以及多篇论文对比分析。
+`paper-reading` 是一个用于深度阅读学术论文和综合多篇论文结论的 Codex skill，适用于 arXiv 论文、PDF、技术报告、研究文章，以及多篇论文对比分析。
 
-它默认使用中文输出，重点不是复述摘要，而是帮助你判断论文真正要解决什么问题、方法是否有新意、图表证据是否充分、贡献是否被夸大，以及有哪些可以复用的想法。
+它默认使用中文输出，重点不是复述摘要，而是帮助你判断论文真正要解决什么问题、方法是否有新意、图表证据是否充分、贡献是否被夸大，多篇论文放在一起能得到什么可靠结论，以及有哪些可以复用的想法。
 
 ## 功能
 
@@ -17,7 +17,11 @@
 - 用自然语言解释关键公式和方法设计
 - 像审稿人一样检查实验可信度
 - 生成一页纸论文卡片
-- 支持多篇论文的横向比较
+- 支持多篇论文的横向比较和综合结论
+- 输出 claim-evidence 矩阵，标注每个结论的证据和可信度
+- 提炼多篇论文之间的共识、冲突、条件性结论和研究空白
+- 梳理方法族谱，判断哪些变化是概念创新，哪些只是工程 refinement
+- 给出可复用想法、缺失实验、下一步实验和推荐阅读顺序
 
 ## 仓库结构
 
@@ -58,6 +62,10 @@ Use $paper-reading to review the experiments and tell me whether the evidence su
 
 ```text
 Use $paper-reading to explain the method flow from the main figure and critique the key tables.
+```
+
+```text
+Use $paper-reading to synthesize these papers into shared conclusions, conflicts, research gaps, reusable ideas, and next experiments.
 ```
 
 ## 适用范围

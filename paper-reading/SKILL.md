@@ -1,6 +1,6 @@
 ---
 name: paper-reading
-description: Use this skill when the user asks to read, analyze, summarize, critique, compare, or extract insights from an academic paper, arXiv paper, PDF, technical report, research article, or multiple papers, including figure/table-aware reading notes. Do not use this skill for casual blog posts, news articles, or non-academic writing unless the user explicitly asks for research-paper-style analysis.
+description: Use this skill when the user asks to read, analyze, summarize, critique, compare, synthesize conclusions from, or extract insights from an academic paper, arXiv paper, PDF, technical report, research article, or multiple papers, including figure/table-aware reading notes and multi-paper research synthesis. Do not use this skill for casual blog posts, news articles, or non-academic writing unless the user explicitly asks for research-paper-style analysis.
 ---
 
 # Paper Reading Skill
@@ -12,6 +12,8 @@ You are helping the user read academic papers deeply and efficiently. Default to
 Do not merely summarize the abstract. Explain what the paper is really trying to solve, how it solves it, whether the evidence is convincing, and what the user can learn or reuse from it.
 
 When information is missing, uncertain, or not visible in the provided material, clearly say so.
+
+When multiple papers are provided, do not only summarize them one by one. Turn them into a comparative research judgment: what they jointly show, where they conflict, what remains unproven, and what next experiment or reading path would be most useful.
 
 ## Visual Evidence First
 
@@ -34,6 +36,65 @@ When the paper has a main method figure, architecture diagram, framework overvie
 5. Connect each arrow or branch to the paper's claimed contribution: what problem it solves, what signal it uses, and what would likely fail if removed.
 6. If the figure omits details needed to understand the algorithm, supplement from the method text or formulas and clearly label the supplement as coming from text rather than the figure.
 7. If no main method figure is available, reconstruct the method flow from the method section and say that no visual pipeline was available.
+
+## Multi-Paper Synthesis
+
+When the user uploads or references multiple papers, first standardize each paper into the same paper-card fields, then synthesize across papers.
+
+### Cross-Paper Comparison Matrix
+
+Build a compact matrix when it helps:
+
+| Dimension | Paper A | Paper B | Paper C |
+|---|---|---|---|
+| Problem setting |  |  |  |
+| Core method |  |  |  |
+| Key novelty |  |  |  |
+| Dataset/task |  |  |  |
+| Main evidence |  |  |  |
+| Weakness |  |  |  |
+| Reusable idea |  |  |  |
+
+### Cross-Paper Conclusions
+
+Separate conclusions into:
+
+1. Strong conclusion: supported by multiple papers or multiple independent settings
+2. Conditional conclusion: true only under specific datasets, tasks, scales, assumptions, or metrics
+3. Conflicting conclusion: papers disagree; explain whether the conflict comes from setting, data, metric, baseline, scale, or implementation
+4. Weak conclusion: plausible but not yet strongly proven
+5. Open question: important issue not answered by the provided papers
+
+### Claim-Evidence Matrix
+
+For important claims, connect the claim to explicit evidence:
+
+| Claim | Supporting paper(s) | Evidence | Confidence | Caveat |
+|---|---|---|---|---|
+|  |  | Figure/table/experiment/theory | High/Medium/Low |  |
+
+Do not present a cross-paper claim as established unless the evidence supports it. If evidence is only from one paper, label it as paper-specific.
+
+### Method Family Tree
+
+When papers are method-related, explain the lineage:
+
+1. Which paper introduces the base idea or problem framing
+2. Which paper changes the architecture, loss, data, training recipe, inference procedure, or evaluation
+3. Which changes are conceptual versus engineering refinements
+4. Which method seems more general, cheaper, stronger, or easier to reproduce
+5. Which combination of ideas looks promising and why
+
+### Reusable Ideas and Next Steps
+
+End multi-paper analysis with practical research takeaways:
+
+1. Reusable modules, losses, prompts, evaluation designs, figures, or writing frames
+2. Missing baselines, ablations, datasets, robustness checks, or failure cases across the set
+3. The most credible paper and why
+4. The weakest evidence and why
+5. Suggested next experiment
+6. Suggested reading order
 
 ## Workflow
 
@@ -151,6 +212,33 @@ Reproduction notes:
 Open questions:
 ```
 
+### 10. Multi-Paper Research Synthesis
+
+When multiple papers are available, produce:
+
+```text
+Multi-paper conclusion:
+
+1. Shared problem:
+2. Common technical direction:
+3. Strongest shared conclusion:
+4. Conditional conclusions:
+5. Conflicting findings:
+6. Best-supported paper:
+7. Weakest evidence:
+8. Most reusable idea:
+9. Missing experiments across papers:
+10. Research gap:
+11. Suggested next experiment:
+12. Suggested reading order:
+```
+
+Use confidence labels for major synthesis claims:
+
+- High: backed by strong experiments or multiple papers with compatible evidence
+- Medium: plausible, but limited by dataset, baseline, ablation, or sample size
+- Low: interesting but speculative, weakly supported, or based on only one narrow result
+
 ## Output Style
 
 Default to a concise but critical Chinese reading note. Use headings that match the user's request rather than always emitting the full workflow. If the user asks for a quick read, prioritize sections 1, 2, and 8. If they ask for deep reading or review, include the full workflow and be explicit about weak evidence, missing comparisons, and uncertain claims.
@@ -159,4 +247,4 @@ For visual papers, do not only refer to figures and tables by number. Put the re
 
 For method-heavy papers, prefer explaining the method from the main figure before diving into formulas. Use a compact rhythm: "main figure -> pipeline steps -> module purpose -> training/inference behavior -> what is novel".
 
-When analyzing multiple papers, first produce a compact card for each paper, then compare them by problem, method, evidence, limitations, and reusable ideas.
+When analyzing multiple papers, first produce a compact card for each paper, then compare them by problem, method, evidence, limitations, and reusable ideas. Prefer the synthesis rhythm: "paper cards -> comparison matrix -> claim-evidence matrix -> consensus/conflict/gap -> reusable ideas -> next experiment".

@@ -2,9 +2,9 @@
 
 [中文 README](README.md)
 
-`paper-reading` is a Codex skill for deep and efficient academic paper reading. It is designed for arXiv papers, PDFs, technical reports, research articles, and multi-paper comparison tasks.
+`paper-reading` is a Codex skill for deep academic paper reading and multi-paper research synthesis. It is designed for arXiv papers, PDFs, technical reports, research articles, and multi-paper comparison tasks.
 
-The skill defaults to Chinese output. Its goal is not to restate the abstract, but to help you understand what problem the paper is really solving, whether the method is genuinely new, whether the figure and table evidence is convincing, whether the contributions are overstated, and which ideas can be reused.
+The skill defaults to Chinese output. Its goal is not to restate the abstract, but to help you understand what problem the paper is really solving, whether the method is genuinely new, whether the figure and table evidence is convincing, whether the contributions are overstated, what reliable conclusions can be drawn across multiple papers, and which ideas can be reused.
 
 ## Features
 
@@ -17,7 +17,11 @@ The skill defaults to Chinese output. Its goal is not to restate the abstract, b
 - Explain key formulas and method sections in plain language
 - Review experimental credibility like a peer reviewer
 - Generate a compact one-page paper card
-- Compare multiple papers side by side
+- Compare multiple papers side by side and synthesize conclusions
+- Produce a claim-evidence matrix with confidence labels
+- Identify consensus, conflicts, conditional conclusions, and research gaps across papers
+- Build a method family tree to separate conceptual novelty from engineering refinements
+- Suggest reusable ideas, missing experiments, next experiments, and reading order
 
 ## Repository Structure
 
@@ -58,6 +62,10 @@ Use $paper-reading to review the experiments and tell me whether the evidence su
 
 ```text
 Use $paper-reading to explain the method flow from the main figure and critique the key tables.
+```
+
+```text
+Use $paper-reading to synthesize these papers into shared conclusions, conflicts, research gaps, reusable ideas, and next experiments.
 ```
 
 ## Scope
