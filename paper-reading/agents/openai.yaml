@@ -1,4 +1,4 @@
 interface:
   display_name: "Paper Reading"
-  short_description: "Deep academic paper reading and critique"
-  default_prompt: "Use $paper-reading to deeply analyze this academic paper and produce Chinese reading notes."
+  short_description: "Figure/table-aware academic paper reading and critique"
+  default_prompt: "Use $paper-reading to deeply analyze this academic paper in Chinese, showing key figures/tables, explaining the method flow from the main figure, and then critiquing the evidence."

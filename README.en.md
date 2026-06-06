@@ -4,14 +4,15 @@
 
 `paper-reading` is a Codex skill for deep and efficient academic paper reading. It is designed for arXiv papers, PDFs, technical reports, research articles, and multi-paper comparison tasks.
 
-The skill defaults to Chinese output. Its goal is not to restate the abstract, but to help you understand what problem the paper is really solving, whether the method is genuinely new, whether the evidence is convincing, whether the contributions are overstated, and which ideas can be reused.
+The skill defaults to Chinese output. Its goal is not to restate the abstract, but to help you understand what problem the paper is really solving, whether the method is genuinely new, whether the figure and table evidence is convincing, whether the contributions are overstated, and which ideas can be reused.
 
 ## Features
 
 - Quickly judge whether a paper is worth deep reading
 - Produce four-cell paper notes: problem, method, evidence, and limitation
 - Decompose claimed contributions into real novelty, engineering combinations, experimental contributions, and framing
-- Analyze which claims are supported by major figures and tables
+- Show key figures or tables first, then analyze which claims they support
+- Explain the method flow from the main method figure, architecture diagram, or pipeline
 - Position the paper against related work
 - Explain key formulas and method sections in plain language
 - Review experimental credibility like a peer reviewer
@@ -53,6 +54,10 @@ Use $paper-reading to compare these three papers and explain which ideas are reu
 
 ```text
 Use $paper-reading to review the experiments and tell me whether the evidence supports the claims.
+```
+
+```text
+Use $paper-reading to explain the method flow from the main figure and critique the key tables.
 ```
 
 ## Scope
